@@ -15,16 +15,15 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private double tipPercentage = -1;
-    private EditText editTextTotal;
     public final static String KEY_TOTAL_INCLUDING_TIP = "totalIncludingTip";
     public final static String TAG = MainActivity.class.getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Button btnSubmit = (Button)findViewById(R.id.btnSubmit);
-        editTextTotal = (EditText)findViewById(R.id.total);
         RadioGroup radioGroupTip = (RadioGroup) findViewById(R.id.radioGroupTip);
 
         btnSubmit.setOnClickListener(new buttonListener());
@@ -55,13 +54,13 @@ public class MainActivity extends Activity {
         public void onClick(View v) {
             Log.i(TAG,"El botón ha sido presionado");
             if (tipPercentage != -1) {
-                double total = 0.0;
-                String txtTotal = editTextTotal.getText().toString().trim();
+                EditText editTextTotal = (EditText)findViewById(R.id.total);
+                String txtTotal = editTextTotal.getText().toString();
 
                 if (txtTotal.equals("")) {
                     Toast.makeText(MainActivity.this, R.string.err_editText_empty, Toast.LENGTH_SHORT).show();
                 } else {
-                    total = Double.parseDouble(txtTotal);
+                    double total = Double.parseDouble(txtTotal);
                     total += total*tipPercentage;
                     Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                     intent.putExtra(KEY_TOTAL_INCLUDING_TIP, total);
