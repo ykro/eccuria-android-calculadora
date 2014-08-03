@@ -10,5 +10,6 @@
     <string name="txt_radio_18percent">18%</string>
     <string name="txt_btn_submit">Calcular</string>
     <string name="title_activity_result">Resultado</string>
-
+    <string name="err_editText_empty">Debe ingresar el total consumido</string>
+    <string name="err_option_not_selected">Debe seleccionar alguna de las opciones de propina</string>
 </resources>
